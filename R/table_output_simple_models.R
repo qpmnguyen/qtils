@@ -1,18 +1,18 @@
 # Simple functionality to provide nice table outputs for simple models (such as glm)
 
 #' @title Function to provide a quick table for ANCOVA analyses with linear models
-#' @param df (Tibble/DataFrame) The data frame of interest
-#' @param var (String) Name of the outcome variable
-#' @param arm (String) Name of the primary treatment variable (or any other factor variable)
+#' @param df \code{tibble}/\code{DataFrame} The data frame of interest
+#' @param var \code{string} Name of the outcome variable
+#' @param arm \code{string} Name of the primary treatment variable (or any other factor variable)
 #'     that is of primary interest
-#' @param covariates (Vector of Strings) A vector of covariates for adjustment
+#' @param covariates \code{vector}. A vector of covariates for adjustment
 #' @param ... Additional arguments passed to \code{lm} function
 #' @return A \code{flextable} table
-#' @details This function will fit a linear model of the form \code{var ~ arm + covariates}, where
-#'   the table will have LS means per strata of \code{arm}, as well as means and
-#'   standard deviations of the primary outcome \code{var} stratified by \code{arm}. 
-#'   The p-value is the ANOVA p-value associated with \code{arm}, since \code{arm}
-#'   might have multiple levels. 
+#' @description This function takes a continuous outcome (specified by \code{var}) and a binary covariate
+#'    (likely a treatment assignment variable specified by \code{arm}), and fit a linear regression adjusted
+#'    for additional covariates (specified by \code{covariates}, which is a vector of string values. The function 
+#'    will output the observed means and standard deviations stratified by \code{arm}, as well as LS means and standard
+#'    errors. The p-value reported will be the overall ANOVA p-value of the term specified in \code{arm}.   
 #' @importFrom rlang sym
 #' @export
 #' @examples
@@ -21,9 +21,9 @@
 #'     dplyr::rename_all(tolower) |> 
 #'     dplyr::filter(paramcd == "ALT") |> 
 #'     dplyr::filter(avisit == "WEEK 5 DAY 36")
-#' quick_lm_ancova_table(df = proc_df, var = "aval", 
+#' qtab_lm_anova(df = proc_df, var = "aval", 
 #'     arm = "trt01a", covariates = NULL)
-quick_lm_ancova_table <- function(df, var, arm, covariates=NULL, ...){
+qtab_lm_anova <- function(df, var, arm, covariates=NULL, ...){
     sd <- emmean <- SE <- `LS Means (SE)` <- term <- p.value <- NULL
     
     checkmate::assert_factor(df[[arm]])
