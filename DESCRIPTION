@@ -9,7 +9,20 @@ Description: This package hosts some convenience functions for easy usage.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.0.0
+RoxygenNote: 7.2.3
 Imports: 
+    broom,
     checkmate,
-    stats
+    dplyr,
+    emmeans,
+    flextable,
+    glue,
+    rlang,
+    stats,
+    tibble
+Depends: 
+    R (>= 2.10)
+LazyData: true
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
