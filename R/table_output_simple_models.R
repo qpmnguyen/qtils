@@ -8,13 +8,21 @@
 #' @param covariates (Vector of Strings) A vector of covariates for adjustment
 #' @param ... Additional arguments passed to \code{lm} function
 #' @return A \code{flextable} table
-#' @details This function will fit a linear model of the form var ~ arm + covariates
+#' @details This function will fit a linear model of the form \code{var ~ arm + covariates}, where
 #'   the table will have LS means per strata of \code{arm}, as well as means and
 #'   standard deviations of the primary outcome \code{var} stratified by \code{arm}. 
 #'   The p-value is the ANOVA p-value associated with \code{arm}, since \code{arm}
 #'   might have multiple levels. 
 #' @importFrom rlang sym
 #' @export
+#' @examples
+#' data("rand_adlb")
+#' proc_df <- rand_adlb |> 
+#'     dplyr::rename_all(tolower) |> 
+#'     dplyr::filter(paramcd == "ALT") |> 
+#'     dplyr::filter(avisit == "WEEK 5 DAY 36")
+#' quick_lm_ancova_table(df = proc_df, var = "aval", 
+#'     arm = "trt01a", covariates = NULL)
 quick_lm_ancova_table <- function(df, var, arm, covariates=NULL, ...){
     sd <- emmean <- SE <- `LS Means (SE)` <- term <- p.value <- NULL
     

@@ -25,9 +25,18 @@ A \code{flextable} table
 Function to provide a quick table for ANCOVA analyses with linear models
 }
 \details{
-This function will fit a linear model of the form var ~ arm + covariates
+This function will fit a linear model of the form \code{var ~ arm + covariates}, where
 the table will have LS means per strata of \code{arm}, as well as means and
 standard deviations of the primary outcome \code{var} stratified by \code{arm}.
 The p-value is the ANOVA p-value associated with \code{arm}, since \code{arm}
 might have multiple levels.
+}
+\examples{
+data("rand_adlb")
+proc_df <- rand_adlb |> 
+    dplyr::rename_all(tolower) |> 
+    dplyr::filter(paramcd == "ALT") |> 
+    dplyr::filter(avisit == "WEEK 5 DAY 36")
+quick_lm_ancova_table(df = proc_df, var = "aval", 
+    arm = "trt01a", covariates = NULL)
 }

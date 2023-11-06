@@ -6,10 +6,10 @@
 [![R-CMD-check](https://github.com/qpmnguyen/qtils/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/qpmnguyen/qtils/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-Personal utility package. Scope includes:  
-* Convenience functions to do modeling and provides standardized outputs for certain types of model and data structures 
+Personal utility package. Functionality includes: 
 
-etc. 
+* Generating tables from standardized models  
+    * ANCOVA for a primary treatment effect.  
 
 ## Installation
 
