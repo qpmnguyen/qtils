@@ -14,6 +14,7 @@
 #'   The p-value is the ANOVA p-value associated with \code{arm}, since \code{arm}
 #'   might have multiple levels. 
 #' @importFrom rlang sym
+#' @export
 quick_lm_ancova_table <- function(df, var, arm, covariates=NULL, ...){
     sd <- emmean <- SE <- `LS Means (SE)` <- term <- p.value <- NULL
     
