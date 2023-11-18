@@ -16,13 +16,25 @@
     <loc>https://qpmnguyen.github.io/qtils/index.html</loc>
   </url>
   <url>
+    <loc>https://qpmnguyen.github.io/qtils/news/index.html</loc>
+  </url>
+  <url>
+    <loc>https://qpmnguyen.github.io/qtils/reference/custom_entropy.html</loc>
+  </url>
+  <url>
     <loc>https://qpmnguyen.github.io/qtils/reference/index.html</loc>
   </url>
   <url>
     <loc>https://qpmnguyen.github.io/qtils/reference/qplot_obs_long.html</loc>
   </url>
   <url>
+    <loc>https://qpmnguyen.github.io/qtils/reference/qtab_glm_nb.html</loc>
+  </url>
+  <url>
     <loc>https://qpmnguyen.github.io/qtils/reference/qtab_lm_anova.html</loc>
+  </url>
+  <url>
+    <loc>https://qpmnguyen.github.io/qtils/reference/qtabl_mglm_coef.html</loc>
   </url>
   <url>
     <loc>https://qpmnguyen.github.io/qtils/reference/rand_adlb.html</loc>
