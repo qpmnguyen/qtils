@@ -56,7 +56,8 @@ over time. We can plot mean trajectories as well as spaghetti plots.</p>
 <span>  <span class="va">id</span>,</span>
 <span>  col_by <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  lt_by <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  facet_formula <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  facet_row <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  facet_col <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -90,8 +91,12 @@ over time. We can plot mean trajectories as well as spaghetti plots.</p>
 <dd><p><code>symbol</code>. Unquoted variable name representing the line type. Can be NULL.</p></dd>
 
 
-<dt>facet_formula</dt>
-<dd><p><code>formula</code>. Formula representing the faceting. Can be NULL</p></dd>
+<dt>facet_row</dt>
+<dd><p><code>symbol</code>. Unquoted variable name representing row facets. Can be NULL</p></dd>
+
+
+<dt>facet_col</dt>
+<dd><p><code>symbol</code>. Unquoted variable name representing column facets. Can be NULL</p></dd>
 
 </dl></div>
     <div class="section level2">
