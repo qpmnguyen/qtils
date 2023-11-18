@@ -11,7 +11,8 @@
 #' @param id \code{symbol}. Unquoted variable name representing the identifier column. 
 #' @param col_by \code{symbol}. Unquoted variable name representing the colors. Can be NULL. 
 #' @param lt_by \code{symbol}. Unquoted variable name representing the line type. Can be NULL.
-#' @param facet_formula \code{formula}. Formula representing the faceting. Can be NULL
+#' @param facet_row \code{symbol}. Unquoted variable name representing row facets. Can be NULL
+#' @param facet_col \code{symbol}. Unquoted variable name representing column facets. Can be NULL
 #' 
 #' @return A \code{ggplot2} plot
 #' 
@@ -34,9 +35,8 @@
 qplot_obs_long <- function(df, ptype, var, tvar, id, 
                            col_by = NULL, 
                            lt_by = NULL,
-                           facet_formula = NULL){
-    
-    checkmate::assert_formula(facet_formula, null.ok = TRUE)
+                           facet_row = NULL, 
+                           facet_col = NULL){
     
     n <- m <- sd <- se <- upper <- lower <- NULL
     
@@ -58,7 +58,8 @@ qplot_obs_long <- function(df, ptype, var, tvar, id,
             stop("col_by has to be specified first before lt_by")
         }
         
-        plot_df <- df |> dplyr::group_by({{ tvar }}, {{ col_by }}, {{ lt_by }}) |> 
+        plot_df <- df |> dplyr::group_by({{ tvar }}, {{ col_by }}, {{ lt_by }}, {{ facet_row }}, 
+                                         {{ facet_col }}) |> 
             dplyr::summarise(n = dplyr::n_distinct({{ id }}), 
                       m = mean({{ var }}, na.rm = TRUE),
                       sd = sd({{ var }}, na.rm = TRUE),
@@ -74,7 +75,7 @@ qplot_obs_long <- function(df, ptype, var, tvar, id,
             )) + ggplot2::geom_line() + 
             ggplot2::geom_ribbon(aes(ymax = upper, ymin = lower), alpha = 0.2) +
             ggrepel::geom_text_repel(aes(label = round(m,2)), seed = 1234) +
-            ggplot2::facet_grid(facet_formula)
+            ggplot2::facet_grid(rows = {{ facet_row }}, cols = {{ facet_col }})
         
     } else if (ptype == "spaghetti"){
         out <- ggplot2::ggplot(df, aes(
@@ -83,7 +84,7 @@ qplot_obs_long <- function(df, ptype, var, tvar, id,
             fill = {{ col_by }}, 
             group = {{ id }},
         )) + ggplot2::geom_line(alpha = 0.2) +
-            ggplot2::facet_grid(facet_formula)
+            ggplot2::facet_grid(rows = {{ facet_row }}, cols = {{ facet_col }})
     } else {
         stop("Not supported")
     }

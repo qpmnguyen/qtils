@@ -12,7 +12,8 @@ qplot_obs_long(
   id,
   col_by = NULL,
   lt_by = NULL,
-  facet_formula = NULL
+  facet_row = NULL,
+  facet_col = NULL
 )
 }
 \arguments{
@@ -30,7 +31,9 @@ qplot_obs_long(
 
 \item{lt_by}{\code{symbol}. Unquoted variable name representing the line type. Can be NULL.}
 
-\item{facet_formula}{\code{formula}. Formula representing the faceting. Can be NULL}
+\item{facet_row}{\code{symbol}. Unquoted variable name representing row facets. Can be NULL}
+
+\item{facet_col}{\code{symbol}. Unquoted variable name representing column facets. Can be NULL}
 }
 \value{
 A \code{ggplot2} plot
