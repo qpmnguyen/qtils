@@ -1,6 +1,6 @@
 Package: qtils
 Title: Personal utility package
-Version: 0.0.9002
+Version: 0.0.9003
 Authors@R:
     person("Quang", "Nguyen", , "quangpmnguyen@gmail.com", role = c("aut", "cre"))
 Description: This package hosts some convenience functions for easy usage.
