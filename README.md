@@ -11,7 +11,7 @@ Personal utility package. Functionality includes:
 * Generating tables from standardized models  
     * ANCOVA for a primary treatment effect.    
 * Generating common plots. 
-    * Observed longitudinal models 
+    * Observed longitudinal trajectories stratified by factors.     
 
 ## Installation
 

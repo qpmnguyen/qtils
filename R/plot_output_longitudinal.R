@@ -36,6 +36,8 @@ qplot_obs_long <- function(df, ptype, var, tvar, id,
                            lt_by = NULL,
                            facet_formula = NULL){
     
+    checkmate::assert_formula(facet_formula, null.ok = TRUE)
+    
     n <- m <- sd <- se <- upper <- lower <- NULL
     
     ptype <- match.arg(ptype, c("mean", "spaghetti"))
@@ -44,6 +46,8 @@ qplot_obs_long <- function(df, ptype, var, tvar, id,
     lmiss <- rlang::quo_is_null(rlang::enquo(lt_by))
     
     if (ptype == "mean"){
+        
+        # mental gymnastics for a group expression :(
         if (cmiss & lmiss){
             grp_expr <- NULL 
         } else if (!cmiss & lmiss){
@@ -69,7 +73,8 @@ qplot_obs_long <- function(df, ptype, var, tvar, id,
                 group = !!grp_expr,
             )) + ggplot2::geom_line() + 
             ggplot2::geom_ribbon(aes(ymax = upper, ymin = lower), alpha = 0.2) +
-            ggrepel::geom_text_repel(aes(label = round(m,2)), seed = 1234)
+            ggrepel::geom_text_repel(aes(label = round(m,2)), seed = 1234) +
+            ggplot2::facet_grid(facet_formula)
         
     } else if (ptype == "spaghetti"){
         out <- ggplot2::ggplot(df, aes(
@@ -77,7 +82,8 @@ qplot_obs_long <- function(df, ptype, var, tvar, id,
             col = {{ col_by }}, linetype = {{ lt_by }}, 
             fill = {{ col_by }}, 
             group = {{ id }},
-        )) + ggplot2::geom_line(alpha = 0.2)  
+        )) + ggplot2::geom_line(alpha = 0.2) +
+            ggplot2::facet_grid(facet_formula)
     } else {
         stop("Not supported")
     }

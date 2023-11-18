@@ -73,3 +73,21 @@ qtab_lm_anova <- function(df, var, arm, covariates=NULL, ...){
     
     return(out)
 }
+
+
+
+
+#' @title Function to provide quick flextable to estimate differences in response rate from a negative binomial model 
+#'     with offset 
+#' @param offset \code{symbol}. The offset variable
+#' @inheritParams qtab_lm_anova
+qtab_glm_nb <- function(df, var, arm, offset=NULL, covariates = NULL,  ...){
+    return(0)
+}
+
+
+#' @title Table for generating a table combining multiple glm calls   
+#' @param modlist \code{List}. A list of models for combination
+qtabl_mglm_coef <- function(modlist){
+    return(0)
+}
