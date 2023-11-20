@@ -18,4 +18,14 @@ test_that("basic_test_qplot_longitudinal", {
     testthat::expect_error(qplot_obs_long(df = df, ptype = "mean", var = AVAL, 
                                           tvar = AVISIT, id = USUBJID, col_by = NULL, 
                                           lt_by = STRATA1))
+    
+    testthat::expect_no_error(qplot_obs_long(df = df, ptype = "mean", var = AVAL, 
+                                             tvar = AVISIT, id = USUBJID, facet_row = STRATA1))
+    
+    testthat::expect_no_error(qplot_obs_long(df = df, ptype = "mean", var = AVAL, 
+                                             tvar = AVISIT, id = USUBJID, facet_col = STRATA1))
+    
+    testthat::expect_no_error(qplot_obs_long(df = df, ptype = "mean", var = AVAL, 
+                                             tvar = AVISIT, id = USUBJID, facet_row = STRATA1, 
+                                             facet_col = STRATA2))
 })

@@ -49,7 +49,7 @@ qplot_obs_long <- function(df, ptype, var, tvar, id,
         
         # mental gymnastics for a group expression :(
         if (cmiss & lmiss){
-            grp_expr <- NULL 
+            grp_expr <- 1 
         } else if (!cmiss & lmiss){
             grp_expr <- rlang::expr({{ col_by }})
         } else if (!cmiss & !lmiss){
@@ -70,12 +70,14 @@ qplot_obs_long <- function(df, ptype, var, tvar, id,
         out <- ggplot2::ggplot(plot_df, aes(
                 x = {{ tvar }}, y = m, 
                 col = {{ col_by }}, linetype = {{ lt_by }}, 
-                fill = {{ col_by }}, 
+                fill = {{ col_by }},
                 group = !!grp_expr,
             )) + ggplot2::geom_line() + 
             ggplot2::geom_ribbon(aes(ymax = upper, ymin = lower), alpha = 0.2) +
             ggrepel::geom_text_repel(aes(label = round(m,2)), seed = 1234) +
-            ggplot2::facet_grid(rows = {{ facet_row }}, cols = {{ facet_col }})
+            ggplot2::geom_point() +
+            ggplot2::facet_grid(rows = ggplot2::vars({{ facet_row }}), 
+                                cols = ggplot2::vars({{ facet_col }}))
         
     } else if (ptype == "spaghetti"){
         out <- ggplot2::ggplot(df, aes(
