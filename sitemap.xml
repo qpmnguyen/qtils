@@ -10,6 +10,12 @@
     <loc>https://qpmnguyen.github.io/qtils/LICENSE.html</loc>
   </url>
   <url>
+    <loc>https://qpmnguyen.github.io/qtils/articles/change_from_baseline_samplesize.html</loc>
+  </url>
+  <url>
+    <loc>https://qpmnguyen.github.io/qtils/articles/index.html</loc>
+  </url>
+  <url>
     <loc>https://qpmnguyen.github.io/qtils/authors.html</loc>
   </url>
   <url>
@@ -22,7 +28,16 @@
     <loc>https://qpmnguyen.github.io/qtils/reference/custom_entropy.html</loc>
   </url>
   <url>
+    <loc>https://qpmnguyen.github.io/qtils/reference/cv2sdlog.html</loc>
+  </url>
+  <url>
     <loc>https://qpmnguyen.github.io/qtils/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://qpmnguyen.github.io/qtils/reference/prec_paireddiff.html</loc>
+  </url>
+  <url>
+    <loc>https://qpmnguyen.github.io/qtils/reference/presize_log_backtransform.html</loc>
   </url>
   <url>
     <loc>https://qpmnguyen.github.io/qtils/reference/qplot_obs_long.html</loc>
