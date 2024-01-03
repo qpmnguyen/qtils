@@ -1,0 +1,87 @@
+---
+title: "Estimating sample size for change-from-baseline analysis"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Estimating sample size for change-from-baseline analysis}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+bibliography: references.bib
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This document provides some basic dogfooding for performing sample size estimation for a change-from-baseline analysis using the `qtils` and `presize` packages.
+
+```{r setup}
+library(qtils)
+library(presize)
+library(flextable)
+```
+
+## One-sample test
+
+A standard frequentist approach to a change-from-baseline analysis is a one-sample t-test on the sample paired differences. The precision of the estimate is therefore dependent on the standard deviation of the paired differences.
+
+$$
+\bar{X} \pm \frac{t_{1-\alpha/2, n-1} \sigma}{\sqrt{n}}
+$$where $n$ is the sample size, $\alpha$ is the type 1 error rate, and $\sigma$ is the estimated sample standard deviation. The above equation is for a two-sided test. Estimating the precision or the sample size (given precision) for the above scenario is very simple if we already have the standard deviation of the paired differences. This can be sourced from a descriptive statistics table for a change-from-baseline endpoint from a previous clinical trial report or from an observational study. Here, we leveraged the `presize` R package. The `qtils` package also provides a convenient function to turn `presize` objects into nice `flextable` objects.
+
+```{r}
+presize::prec_mean(mean = 0, sd = 3, n = 100, conf.width = NULL, conf.level = 0.95) |> 
+    as_flextable(show = 'half-width')
+```
+
+### Unknown standard deviation of the differences
+
+However, if there is no direct source for the standard deviation of the paired differences, we can compute based the standard deviation of the either the pre-treament value, the post-treament value, or both, while making certain assumptions about the correlation. This `qtils` package provides a convenient approach to do so based on the following relationship:
+
+$$
+\sigma^2_{\bar{d}} = \sigma^2_{prior} + \sigma^2_{post} - 2 \sigma_{prior} \sigma_{post}\rho
+$$ where $\rho$ is the correlation between the two measurements. Usually we set correlation to be around 0.6 [@meyer2013].
+
+```{r}
+qtils::prec_paireddiff(n = c(20,30,40), sd1 = 20, cor = 0.7, mean = 50) |> 
+    as_flextable(show = 'half-width')
+
+```
+
+### Log-transformation
+
+There are also instances where the variable of interest is log-normally distributed, usually in cases where the outcome is a continuous and strictly positive (and non-zero) outcome. As such, the estimand in the original scale for a change-from-baseline is technically a **geometric mean fold-change-from-baseline,** which can be converted into percentage change. The back-transformation from results in log space (to fold-change or percentage-change) is non-symmetrical.
+
+However, we need to specify the standard deviation of either the paired differences or each of the paired measurements itself (baseline or post-baseline). We can utilize the relationship between the coefficient of variation (CV - in the original scale) and the standard deviation in log.
+
+$$
+CV_{X} = \sqrt{e^{\sigma_{log}^2} - 1}
+$$
+
+where $\sigma_{log}^2$ is the variance of the variable in log-form. As such, the transformation function is the inverse of the above and is implemented in `qtils` via the `cv2log` function
+
+```{r}
+qtils::cv2sdlog(x = 0.7)
+
+qtils::cv2sdlog(x = 2, inverse=TRUE)
+```
+
+If log-transformation was performed, a back-transformation can be done to conveniently by specifying the `log_trans` option in the `prec_paireddiff` function to get values in the original scale. However, this means that we cannot report the confidence interval half-width since it is no longer symmetrical.
+
+```{r}
+sd1 <- qtils::cv2sdlog(x = 0.7)
+
+qtils::prec_paireddiff(n = c(20,30,40), prec = NULL, sd1 = sd1, cor = 0.6, mean = 3, 
+                       conf_level = 0.95) |> 
+    qtils::presize_log_backtransform() |> 
+    as_flextable(show = "full-width")
+
+```
+
+## Estimating change from baseline using ANCOVA and/or MMRM 
+
+TBD
+
+## References
