@@ -26,4 +26,5 @@ remotes::install_github("qpmnguyen/qtils")
 
 ## TODOs:  
 
-* Write unit tests for the precision functions. 
+* Write unit tests for the precision functions.
+* Parametric bootstrap for beta-binomial distribution. 
