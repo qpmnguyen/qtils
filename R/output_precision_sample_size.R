@@ -23,7 +23,7 @@ prec_paireddiff <- function(n = NULL, prec = NULL, sd1, sd2 = NULL, cor,
         mean <- 0
     }
     
-    pdiff_sd <- sd1^2 + sd2^2 - 2 * sd1 * sd2 * cor
+    pdiff_sd <- sqrt(sd1^2 + sd2^2 - 2 * sd1 * sd2 * cor)
     out <- presize::prec_mean(mean = mean, sd = pdiff_sd, n = n, conf.level = conf_level, 
                                     conf.width = prec, ...)
     return(out)

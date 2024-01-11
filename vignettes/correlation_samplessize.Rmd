@@ -1,0 +1,34 @@
+---
+title: "Estimating sample size for correlation analysis"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Estimating sample size for correlation analysis}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(qtils)
+```
+
+Here we're providing some basic dogfooding for performing sample size estimation for correlation-based analysis, especially to leverage simulations.   
+
+## Intraclass correlation analysis for test-retest reliability. 
+
+Often we are required to perform sample size analysis for test-retest reliability, which measures the differences between two consecutive measures of the same 
+
+
+
+## References. 
+
+- Stats exchange [topic](https://web.archive.org/web/20240111193757/https://stats.stackexchange.com/questions/263451/create-synthetic-data-with-a-given-intraclass-correlation-coefficient-icc) regarding simulating with specific ICC(1,1) in mind 
+
+
+

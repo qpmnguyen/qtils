@@ -1,8 +1,8 @@
 ---
-title: "Estimating sample size for change-from-baseline analysis"
+title: "Estimating sample size for a change-from-baseline analysis"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Estimating sample size for change-from-baseline analysis}
+  %\VignetteIndexEntry{Estimating sample size for a change-from-baseline analysis}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 bibliography: references.bib
@@ -80,7 +80,7 @@ qtils::prec_paireddiff(n = c(20,30,40), prec = NULL, sd1 = sd1, cor = 0.6, mean 
 
 ```
 
-## Estimating change from baseline using ANCOVA and/or MMRM 
+## Estimating change from baseline using ANCOVA and/or MMRM
 
 TBD
 
