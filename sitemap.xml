@@ -34,6 +34,9 @@
     <loc>https://qpmnguyen.github.io/qtils/reference/cv2sdlog.html</loc>
   </url>
   <url>
+    <loc>https://qpmnguyen.github.io/qtils/reference/generate_provenance_string.html</loc>
+  </url>
+  <url>
     <loc>https://qpmnguyen.github.io/qtils/reference/index.html</loc>
   </url>
   <url>
@@ -59,5 +62,8 @@
   </url>
   <url>
     <loc>https://qpmnguyen.github.io/qtils/reference/rand_adsl.html</loc>
+  </url>
+  <url>
+    <loc>https://qpmnguyen.github.io/qtils/reference/toxicity_by_grade.html</loc>
   </url>
 </urlset>
