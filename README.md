@@ -14,6 +14,8 @@ Personal utility package. Functionality includes:
     * Observed longitudinal trajectories stratified by factors.    
 * Precision-based sample size estimation for:  
     * Change-from-baseline analysis incorporating log-transformations or unknown standard deviation of paired differences. 
+* Simulation functions for:   
+    * Phase 1 studies where accelerated titration is used and there is need to simulate by AE grade (and not just DLT)
 
 ## Installation
 
