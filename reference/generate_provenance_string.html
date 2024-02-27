@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">qtils</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.1.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.1.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,7 +58,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">generate_provenance_string</span><span class="op">(</span>manual_path <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">generate_provenance_string</span><span class="op">(</span>manual_path <span class="op">=</span> <span class="cn">NULL</span>, rmd <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -68,20 +68,25 @@
 function to get the current path of the active file (might not work outside RStudio).</p></dd>
 
 
+<dt>rmd</dt>
+<dd><p>(Logical). Indiciate whether an RMD is being rendered. This will affect how the function retrieves
+the current file in non-interactive mode.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Not currently used.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>It is recommended that this <span class="cf">function</span> be used with a manual path, preferably using the </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span> \code{here<span class="sc">::</span>here}. </span></code></pre><p></p></div>
+    <p>It is recommended that this function be used with a manual path, preferably using the
+function <code>here</code></p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span>    <span class="fu">qtils</span><span class="fu">::</span><span class="fu">generate_provenance_string</span><span class="op">(</span><span class="st">"/this/is/the/path/t1.1.R"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> /this/is/the/path/t1.1.R (runner 2024-01-31 R version 4.3.2 (2023-10-31) Linux x86_64)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> /this/is/the/path/t1.1.R (runner 2024-02-27 R version 4.3.2 (2023-10-31) Linux x86_64)</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
