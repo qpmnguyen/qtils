@@ -15,6 +15,10 @@ custom_entropy <- function(vec){
 #' @param inverse \code{logical}. Indicates whether to invert the transformation (sdlog to cv)
 #' @description This function computes the transformation between the coefficient of variation in 
 #'     the original scale and the standard deviation of the log normal (sdlog)
+#' @examples
+#'     value <- cv2sdlog(0.7, inverse=FALSE)
+#'     print(value)
+#'     cv2sdlog(value, inverse=TRUE)
 #' @export 
 cv2sdlog <- function(x, inverse=FALSE){
     if (inverse){

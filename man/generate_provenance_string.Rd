@@ -4,11 +4,14 @@
 \alias{generate_provenance_string}
 \title{This function returns a string that can be added to trace the provenance of a table.}
 \usage{
-generate_provenance_string(manual_path = NULL, ...)
+generate_provenance_string(manual_path = NULL, rmd = FALSE, ...)
 }
 \arguments{
 \item{manual_path}{This is a manual path. If not, the function will attempt to use the \code{rstudioapi}
 function to get the current path of the active file (might not work outside RStudio).}
+
+\item{rmd}{(Logical). Indiciate whether an RMD is being rendered. This will affect how the function retrieves
+the current file in non-interactive mode.}
 
 \item{...}{Not currently used.}
 }
@@ -16,9 +19,8 @@ function to get the current path of the active file (might not work outside RStu
 This function returns a string that can be added to trace the provenance of a table.
 }
 \details{
-\if{html}{\out{<div class="sourceCode">}}\preformatted{It is recommended that this function be used with a manual path, preferably using the 
-function \code{here::here}. 
-}\if{html}{\out{</div>}}
+It is recommended that this function be used with a manual path, preferably using the
+function \code{here}
 }
 \examples{
     qtils::generate_provenance_string("/this/is/the/path/t1.1.R")

@@ -16,3 +16,8 @@ cv2sdlog(x, inverse = FALSE)
 This function computes the transformation between the coefficient of variation in
 the original scale and the standard deviation of the log normal (sdlog)
 }
+\examples{
+    value <- cv2sdlog(0.7, inverse=FALSE)
+    print(value)
+    cv2sdlog(value, inverse=TRUE)
+}
